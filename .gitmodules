@@ -1,0 +1,6 @@
+[submodule "nmos-cpp"]
+	path = nmos-cpp
+	url = https://github.com/sony/nmos-cpp
+[submodule "video-viewer"]
+	path = video-viewer
+	url = https://github.com/deltacasttv/video-viewer
