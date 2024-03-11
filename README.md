@@ -42,7 +42,7 @@ Dependencies required by both nmos-cpp and video-viewer.
 #### [cmake](https://cmake.org/)
 Install cmake with a method of your choice. For example, on Ubuntu, you can use the following command: `sudo apt-get install cmake`. CMake version 3.19 or higher is required.
 #### [conan](https://conan.io/)
-Install conan 1.X with a method of your choice. For example, on Ubuntu, you can use the following command: `sudo apt-get install python3-pip && sudo pip3 install conan==1.62.0`. Conan version should be at least 1.60. Conan 1.62 is recommended for nmos-cpp. Conan 2.X is not supported.
+Install conan 1.X with a method of your choice. For example, on Ubuntu, you can use the following command: `sudo apt-get install python3-pip && sudo pip3 install conan==1.62.0`. Conan version should be at least 1.60. Conan 1.62 is recommended for the version of nmos-cpp we are using. Conan 2.X is not supported yet by the NMOS IPVC Samples.
 
 Execute the following command to avoid using incompatible versions of conan packages :
 ```shell
@@ -73,28 +73,7 @@ For example, to install the Bonjour compatibility library, Name Service Switch m
 sudo apt-get install -f libavahi-compat-libdnssd-dev libnss-mdns avahi-utils
 ```
 
-Alternatively, [Apple's mDNSResponder (also known as ``mdnsd``)](https://github.com/apple-oss-distributions/mDNSResponder) can itself be built from source for Linux. Version 878.200.35 has been tested.
-
-The ``mDNSResponder`` build instructions are quite straightforward. For example, to build and install:
-```sh
-cd mDNSPosix
-make os=linux
-sudo make os=linux install
-```
-
-(The [Getting Started](Getting-Started.md) instructions explain how to set ``NMOS_CPP_USE_AVAHI`` (BOOL) to ``0`` (false) in order to use ``mDNSResponder`` when building nmos-cpp.)
-
-Notes:
-- The [unicast](../Development/third_party/mDNSResponder/unicast.patch) and [permit-over-long-service-types](../Development/third_party/mDNSResponder/permit-over-long-service-types.patch) patches found in this repository are recommended to build the ``mdnsd`` daemon on Linux in order to support unicast DNS-SD.
-  ```sh
-  patch -p1 <unicast.patch
-  patch -p1 <permit-over-long-service-types.patch
-  ```
-- The [poll-rather-than-select](../Development/third_party/mDNSResponder/poll-rather-than-select.patch) patch found in this repository is recommended to build the ``libdns_sd.lib`` client-side library to communicate successfully with the ``mdnsd`` daemon on Linux hosts where (even moderately) huge numbers of file descriptors may be in use.
-  ```sh
-  patch -p1 <poll-rather-than-select.patch
-  ```
-- On systems with IPv6 disabled, the default build of ``mdnsd`` may immediately stop (when run with ``-debug``, the error ``socket AF_INET6: Address family not supported by protocol`` is reported). Prefixing the ``make`` command above with ``HAVE_IPV6=0`` solves this issue at the cost of repeated warnings from the preprocessor during compilation.
+For more details, refer to the [nmos-cpp documentation](https://github.com/sony/nmos-cpp/blob/9ebb3ae3383743918514669edd0392e1b2187a04/Documents/Dependencies.md)
 
 ### [DELTACAST](https://www.deltacast.tv/) [video-viewer](https://github.com/deltacasttv/video-viewer) installation and dependencies
 #### Dependencies and find_package
