@@ -81,20 +81,6 @@ std::string to_string(VMIP_PTP_STATE ptp_state /*!< [in] PTP state that we want 
 std::string to_string(VMIP_CONDUCTOR_AVAILABILITY value);
 
 /*!
-   @brief This function allows to configure a network interface and provides the corresponding ID.
-
-   @detail The call to this function is optional. If it is not called, the OS configuration will not be modified.
-
-   @returns The function returns the status of its execution as VMIP_ERRORCODE
-*/
-VMIP_ERRORCODE configure_nic(HANDLE vcs_context /*!< [in] Context of the VCS session */
-   , const std::string nic_name /*!< [in] Name of the interface that we want to configure */
-   , const uint32_t local_ip_address /*!< [in] Ip address that will be configured on the NIC.*/
-   , const uint32_t local_subnet_mask /*!< [in] Subnet mask that will be configured on the NIC.*/
-   , uint64_t* nic_id /*!< [out] ID of the NIC*/
-);
-
-/*!
    @brief This function manages conductor creation and configuration
 
    @details
